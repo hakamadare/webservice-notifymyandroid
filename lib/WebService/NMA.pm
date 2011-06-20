@@ -25,6 +25,10 @@ Readonly my $DESCLENGTH     => 10000;
 
 # validation regexes
 Readonly my $KEYREGEX       => $RE{num}{int}{-base => 16}{-places => $KEYLENGTH};
+Readonly my $APPREGEX       => ".{1,$APPLENGTH}";
+Readonly my $EVENTREGEX     => ".{1,$EVENTLENGTH}";
+Readonly my $DESCREGEX      => ".{1,$DESCLENGTH}";
+Readonly my $PRIOREGEX      => "(?:-?[12]+|0)";
 
 # NMA-specific configuration
 __PACKAGE__->config(
@@ -40,19 +44,59 @@ sub verify {
         @_, {
             apikey => {
                 type => SCALAR,
-                regex => qr/^$KEYREGEX$/i,
+                callbacks => {
+                    'valid API key' => \&_valid_API_key,
+                },
             },
             developerkey => {
                 optional => 1,
                 type => SCALAR,
-                regex => qr/^$KEYREGEX$/i,
+                callbacks => {
+                    'valid API key' => \&_valid_API_key,
+                },
             },
         },
     );
     $self->get( 'verify', \%params );
 }
 
+sub notify {
+    my $self = shift;
+    my %params = validate( 
+        @_, {
+            apikey => {
+                type => SCALAR | ARRAYREF,
+                callbacks => {
+                    'valid API key' => \&_valid_API_key,
+                },
+            },
+            developerkey => {
+                optional => 1,
+                type => SCALAR,
+                callbacks => {
+                    'valid API key' => \&_valid_API_key,
+                },
+            },
+        },
+    );
+    $self->post( 'verify', \%params );
+}
+
 # private functions
+
+sub _valid_API_key {
+    my( $candidate, $params ) = @_;
+
+    if ( ref( $candidate ) eq 'ARRAY' ) {
+        foreach my $key ( @{$candidate} ) {
+            _valid_API_key( $key ) or return;
+        }
+    }
+    else {
+        $candidate =~ /^$KEYREGEX$/i or return;
+    }
+    return( $candidate );
+}
 
 1; # Magic true value required at end of module
 __END__
