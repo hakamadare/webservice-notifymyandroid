@@ -11,9 +11,13 @@ use version; our $VERSION = qv('v0.0.1');
 # Module implementation here
 
 # constants
-Readonly my $NMA_URL => 'https://nma.usk.bz/publicapi/'; 
+Readonly my $NMA_URL        => 'https://nma.usk.bz/publicapi/'; 
 
-Readonly my $KEYLENGTH => 48;
+# string lengths in characters
+Readonly my $KEYLENGTH      => 48;
+Readonly my $APPLENGTH      => 256;
+Readonly my $EVENTLENGTH    => 1000;
+Readonly my $DESCLENGTH     => 10000;
 
 # NMA-specific configuration
 __PACKAGE__->config(
