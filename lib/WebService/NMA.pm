@@ -28,30 +28,34 @@ __PACKAGE__->config(
     response_parser => 'XML::Simple',
 );
 
+# public functions
+
 sub verify {
     my $self = shift;
     my %params = validate( 
         @_, {
             apikey => {
                 type => SCALAR,
-                callbacks => {
-                    "less than $KEYLENGTH characters" => sub { 
-                        length( $_[0] ) <= $KEYLENGTH 
-                    },
+                callbacks => { 
+                    "less than $KEYLENGTH characters" => \&_valid_key, 
                 },
             },
             developerkey => {
                 optional => 1,
                 type => SCALAR,
                 callbacks => {
-                    "less than $KEYLENGTH characters" => sub { 
-                        length( $_[0] ) <= $KEYLENGTH 
-                    },
+                    "less than $KEYLENGTH characters" => \&_valid_key,
                 },
             },
-        }
+        },
     );
     $self->get( 'verify', \%params );
+}
+
+# private functions
+
+sub _valid_key {
+    return( length( $_[0] ) <= $KEYLENGTH );
 }
 
 1; # Magic true value required at end of module
