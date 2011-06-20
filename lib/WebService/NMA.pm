@@ -24,7 +24,7 @@ Readonly my $EVENTLENGTH    => 1000;
 Readonly my $DESCLENGTH     => 10000;
 
 # validation regexes
-Readonly my $KEYREGEX       => $RE{num}{int}{-base => 16};
+Readonly my $KEYREGEX       => $RE{num}{int}{-base => 16}{-places => $KEYLENGTH};
 
 # NMA-specific configuration
 __PACKAGE__->config(
