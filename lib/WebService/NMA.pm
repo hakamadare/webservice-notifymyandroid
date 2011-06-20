@@ -8,6 +8,7 @@ binmode STDOUT, ":utf8";
 use Carp;
 use Params::Validate qw( :all );
 use Readonly;
+use Regexp::Common qw( number );
 
 use version; our $VERSION = qv('v0.0.1');
 
@@ -21,6 +22,9 @@ Readonly my $KEYLENGTH      => 48;
 Readonly my $APPLENGTH      => 256;
 Readonly my $EVENTLENGTH    => 1000;
 Readonly my $DESCLENGTH     => 10000;
+
+# validation regexes
+Readonly my $KEYREGEX       => $RE{num}{int}{-base => 16};
 
 # NMA-specific configuration
 __PACKAGE__->config(
@@ -36,16 +40,12 @@ sub verify {
         @_, {
             apikey => {
                 type => SCALAR,
-                callbacks => { 
-                    "less than $KEYLENGTH characters" => \&_valid_key, 
-                },
+                regex => qr/^$KEYREGEX$/i,
             },
             developerkey => {
                 optional => 1,
                 type => SCALAR,
-                callbacks => {
-                    "less than $KEYLENGTH characters" => \&_valid_key,
-                },
+                regex => qr/^$KEYREGEX$/i,
             },
         },
     );
@@ -53,10 +53,6 @@ sub verify {
 }
 
 # private functions
-
-sub _valid_key {
-    return( length( $_[0] ) <= $KEYLENGTH );
-}
 
 1; # Magic true value required at end of module
 __END__
