@@ -86,11 +86,9 @@ This document describes WebService::NMA version 0.0.1
 
 =head1 INTERFACE 
 
-=for author to fill in:
-    Write a separate section listing the public components of the modules
-    interface. These normally consist of either subroutines that may be
-    exported, or methods that may be called on objects belonging to the
-    classes provided by the module.
+=head2 verify( apikey => 'API KEY', developerkey => 'DEVELOPER KEY (optional)', )
+
+Documentation located at L<https://nma.usk.bz/api.php>.
 
 
 =head1 DIAGNOSTICS
