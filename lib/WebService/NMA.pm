@@ -1,20 +1,51 @@
 package WebService::NMA;
-
+use base qw( WebService::Simple );
 use warnings;
 use strict;
 use Carp;
+use Params::Validate qw( :all );
+use Readonly;
 
 use version; our $VERSION = qv('v0.0.1');
 
-# Other recommended modules (uncomment to use):
-#  use IO::Prompt;
-#  use Perl6::Export;
-#  use Perl6::Slurp;
-#  use Perl6::Say;
-
-
 # Module implementation here
 
+# constants
+Readonly my $NMA_URL => 'https://nma.usk.bz/publicapi/'; 
+
+Readonly my $KEYLENGTH => 48;
+
+# NMA-specific configuration
+__PACKAGE__->config(
+    base_url        => $NMA_URL,
+    response_parser => 'XML::Simple',
+);
+
+sub verify {
+    my $self = shift;
+    my %params = validate( 
+        @_, {
+            apikey => {
+                type => SCALAR,
+                callbacks => {
+                    "less than $KEYLENGTH characters" => sub { 
+                        length( $_[0] ) <= $KEYLENGTH 
+                    },
+                },
+            },
+            developerkey => {
+                optional => 1,
+                type => SCALAR,
+                callbacks => {
+                    "less than $KEYLENGTH characters" => sub { 
+                        length( $_[0] ) <= $KEYLENGTH 
+                    },
+                },
+            },
+        }
+    );
+    $self->get( 'verify', \%params );
+}
 
 1; # Magic true value required at end of module
 __END__
