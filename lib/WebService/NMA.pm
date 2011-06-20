@@ -70,6 +70,23 @@ sub notify {
                     'valid API key' => \&_valid_API_key,
                 },
             },
+            application => {
+                type => SCALAR,
+                regex => qr/^$APPREGEX$/,
+            },
+            event => {
+                type => SCALAR,
+                regex => qr/^$EVENTREGEX$/,
+            },
+            description => {
+                type => SCALAR,
+                regex => qr/^$DESCREGEX$/,
+            },
+            priority => {
+                optional => 1,
+                type => SCALAR,
+                regex => qr/^$PRIOREGEX$/,
+            },
             developerkey => {
                 optional => 1,
                 type => SCALAR,
@@ -130,7 +147,11 @@ This document describes WebService::NMA version 0.0.1
 
 =head1 INTERFACE 
 
-=head2 verify( apikey => 'API KEY', developerkey => 'DEVELOPER KEY (optional)', )
+=head2 verify(%params)
+
+Documentation located at L<https://nma.usk.bz/api.php>.
+
+=head2 notify(%params)
 
 Documentation located at L<https://nma.usk.bz/api.php>.
 
