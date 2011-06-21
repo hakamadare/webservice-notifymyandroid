@@ -57,7 +57,7 @@ sub verify {
             },
         },
     );
-    $self->get( 'verify', \%params );
+    $self->get( 'verify', \%params )->parse_response;
 }
 
 sub notify {
@@ -96,7 +96,7 @@ sub notify {
             },
         },
     );
-    $self->post( 'verify', \%params );
+    $self->post( 'verify', \%params )->parse_response;
 }
 
 # private functions
@@ -120,7 +120,7 @@ __END__
 
 =head1 NAME
 
-WebService::NMA - [One line description of module's purpose here]
+WebService::NMA - Perl interface to Notify My Android web API
 
 
 =head1 VERSION
@@ -132,18 +132,26 @@ This document describes WebService::NMA version 0.0.1
 
     use WebService::NMA;
 
-=for author to fill in:
-    Brief code example(s) here showing commonest usage(s).
-    This section will be as far as many users bother reading
-    so make it as educational and exeplary as possible.
-  
+    my $nma = WebService::NMA->new;
+
+    # verify an existing API key
+    my $result = $nma->verify( apikey => $my_api_key );
+    defined( $result->{success} ) or die( $result->{error}->{content} );
+
+    # send a message
+    my $message = $nma->notify(
+        apikey      => [ $my_first_api_key, $my_second_api_key, ],
+        application => 'The Printer',
+        event       => 'I can't print!',
+        description => 'Really, I cannot print.  Please come help me.',
+        priority    => 1,
+    );
+    defined( $message->{success} ) or die( $message->{error}->{content} );
+
   
 =head1 DESCRIPTION
 
-=for author to fill in:
-    Write a full description of the module and its features here.
-    Use subsections (=head2, =head3) as appropriate.
-
+C<WebService::NMA> is a Perl interface to the Notify My Android (https://nma.usk.bz/) web API.  One or more NMA API keys are necessary in order to use this module.
 
 =head1 INTERFACE 
 
@@ -181,49 +189,29 @@ Documentation located at L<https://nma.usk.bz/api.php>.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-=for author to fill in:
-    A full explanation of any configuration system(s) used by the
-    module, including the names and locations of any configuration
-    files, and the meaning of any environment variables or properties
-    that can be set. These descriptions must also include details of any
-    configuration language used.
-  
-WebService::NMA requires no configuration files or environment variables.
+WebService::NMA requires no configuration files or environment variables.  Future development will support a custom NMA API URL.
 
 
 =head1 DEPENDENCIES
 
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
+=over
 
-None.
+=item L<Readonly>
 
+=item L<Regexp::Common>
+
+=item L<WebService::Simple>
+
+=item L<XML::Simple>
+
+=back
 
 =head1 INCOMPATIBILITIES
-
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
 
 None reported.
 
 
 =head1 BUGS AND LIMITATIONS
-
-=for author to fill in:
-    A list of known problems with the module, together with some
-    indication Whether they are likely to be fixed in an upcoming
-    release. Also a list of restrictions on the features the module
-    does provide: data types that cannot be handled, performance issues
-    and the circumstances in which they may arise, practical
-    limitations on the size of data sets, special cases that are not
-    (yet) handled, etc.
 
 No bugs have been reported.
 

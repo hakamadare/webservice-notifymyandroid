@@ -13,8 +13,8 @@ my $nma = WebService::NMA->new;
 
 my( $verify ) = $nma->verify( apikey => $APIKEY );
 
-ok( $verify->parse_response->{success}->{code} == 200, 'API accepts valid key' );
+ok( $verify->{success}->{code} == 200, 'API accepts valid key' );
 
 $verify = $nma->verify( apikey => 'abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef' );
 
-ok( $verify->parse_response->{error}->{code} == 401, 'API rejects valid but nonexistent key' );
+ok( $verify->{error}->{code} == 401, 'API rejects valid but nonexistent key' );
