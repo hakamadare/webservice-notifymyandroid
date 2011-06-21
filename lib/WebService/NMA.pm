@@ -38,65 +38,66 @@ __PACKAGE__->config(
 
 # public functions
 
+my %verify_spec = (
+    apikey => {
+        type => SCALAR,
+        callbacks => {
+            'valid API key' => \&_valid_API_key,
+        },
+    },
+    developerkey => {
+        optional => 1,
+        type => SCALAR,
+        callbacks => {
+            'valid API key' => \&_valid_API_key,
+        },
+    },
+);
+
 sub verify {
     my $self = shift;
-    my %params = validate( 
-        @_, {
-            apikey => {
-                type => SCALAR,
-                callbacks => {
-                    'valid API key' => \&_valid_API_key,
-                },
-            },
-            developerkey => {
-                optional => 1,
-                type => SCALAR,
-                callbacks => {
-                    'valid API key' => \&_valid_API_key,
-                },
-            },
-        },
-    );
+    my %params = validate( @_, \%verify_spec );
     $self->get( 'verify', \%params )->parse_response;
 }
 
+my %notify_spec = (
+    apikey => {
+        type => SCALAR | ARRAYREF,
+        callbacks => {
+            'valid API key' => \&_valid_API_key,
+        },
+    },
+    application => {
+        type => SCALAR,
+        regex => qr/^$APPREGEX$/,
+    },
+    event => {
+        type => SCALAR,
+        regex => qr/^$EVENTREGEX$/,
+    },
+    description => {
+        type => SCALAR,
+        regex => qr/^$DESCREGEX$/,
+    },
+    priority => {
+        optional => 1,
+        type => SCALAR,
+        regex => qr/^$PRIOREGEX$/,
+        default => 0,
+    },
+    developerkey => {
+        optional => 1,
+        type => SCALAR,
+        callbacks => {
+            'valid API key' => \&_valid_API_key,
+        },
+    },
+);
+
 sub notify {
     my $self = shift;
-    my %params = validate( 
-        @_, {
-            apikey => {
-                type => SCALAR | ARRAYREF,
-                callbacks => {
-                    'valid API key' => \&_valid_API_key,
-                },
-            },
-            application => {
-                type => SCALAR,
-                regex => qr/^$APPREGEX$/,
-            },
-            event => {
-                type => SCALAR,
-                regex => qr/^$EVENTREGEX$/,
-            },
-            description => {
-                type => SCALAR,
-                regex => qr/^$DESCREGEX$/,
-            },
-            priority => {
-                optional => 1,
-                type => SCALAR,
-                regex => qr/^$PRIOREGEX$/,
-            },
-            developerkey => {
-                optional => 1,
-                type => SCALAR,
-                callbacks => {
-                    'valid API key' => \&_valid_API_key,
-                },
-            },
-        },
-    );
-    $self->post( 'verify', \%params )->parse_response;
+    my %params = validate( @_, \%notify_spec );
+    $self->post( 'notify', \%params )->parse_response;
 }
 
 # private functions
