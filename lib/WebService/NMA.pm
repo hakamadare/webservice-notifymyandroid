@@ -10,7 +10,7 @@ use Params::Validate qw( :all );
 use Readonly;
 use Regexp::Common qw( number );
 
-use version; our $VERSION = qv('v0.0.1');
+use version; our $VERSION = qv('v0.0.2');
 
 # Module implementation here
 
@@ -201,6 +201,23 @@ No bugs have been reported.
 Please report any bugs or feature requests to
 C<bug-webservice-nma@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
+
+
+=head1 TODO
+
+=over
+
+=item write a real README
+
+=item command-line tool for generating notifications
+
+=item integration with other tools: MTAs? Nagios? IM?
+
+=back
+
+=head1 SEE ALSO
+
+L<WebService::Prowl>
 
 
 =head1 AUTHOR
