@@ -1,9 +1,14 @@
 Build.PL
 Changes
 MANIFEST
+META.yml
 README
+SIGNATURE
 lib/WebService/NMA.pm
 t/00.load.t
+t/01.verify.t
+t/02.notify.t
 t/perlcritic.t
 t/pod-coverage.t
 t/pod.t
+Makefile.PL

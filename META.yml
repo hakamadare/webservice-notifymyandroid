@@ -1,0 +1,28 @@
+---
+abstract: 'Perl interface to Notify My Android web API'
+author:
+  - 'Steve Huff <shuff@cpan.org>'
+configure_requires:
+  Module::Build: 0.36
+  Test::More: 0
+generated_by: 'Module::Build version 0.3607'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: WebService-NMA
+provides:
+  WebService::NMA:
+    file: lib/WebService/NMA.pm
+    version: v0.0.1
+requires:
+  Carp: 0
+  Params::Validate: 0
+  Readonly: 0
+  Regexp::Common: 0
+  WebService::Simple: 0
+  XML::Simple: 0
+  version: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: v0.0.1
