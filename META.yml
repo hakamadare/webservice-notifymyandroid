@@ -5,6 +5,9 @@ author:
 configure_requires:
   Module::Build: 0.36
   Test::More: 0
+  Test::Perl::Critic: 0
+  Test::Pod: 1.14
+  Test::Pod::Coverage: 1.04
 generated_by: 'Module::Build version 0.3607'
 license: perl
 meta-spec:
@@ -14,7 +17,7 @@ name: WebService-NotifyMyAndroid
 provides:
   WebService::NotifyMyAndroid:
     file: lib/WebService/NotifyMyAndroid.pm
-    version: v0.0.1
+    version: v0.0.2
 requires:
   Carp: 0
   Params::Validate: 0
@@ -25,4 +28,4 @@ requires:
   version: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: v0.0.1
+version: v0.0.2

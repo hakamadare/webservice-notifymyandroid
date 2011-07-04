@@ -7,3 +7,4 @@
 ^\.git
 ^MYMETA.yml$
 ^ignore\.txt$
+^README.mkd$
