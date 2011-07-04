@@ -19,6 +19,9 @@ my $builder = Module::Build->new(
     },
     configure_requires => {
         'Test::More'            => 0,
+        'Test::Perl::Critic'    => 0,
+        'Test::Pod'             => 1.14,
+        'Test::Pod::Coverage'   => 1.04,
     },
     add_to_cleanup      => [ 'WebService-NMA-*' ],
     create_makefile_pl  => 'traditional',
