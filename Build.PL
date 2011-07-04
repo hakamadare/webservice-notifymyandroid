@@ -23,7 +23,7 @@ my $builder = Module::Build->new(
         'Test::Pod'             => 1.14,
         'Test::Pod::Coverage'   => 1.04,
     },
-    add_to_cleanup      => [ 'WebService-NMA-*' ],
+    add_to_cleanup      => [ 'WebService-NotifyMyAndroid-*' ],
     create_makefile_pl  => 'traditional',
 );
 

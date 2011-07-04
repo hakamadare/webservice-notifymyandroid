@@ -1,4 +1,9 @@
-Revision history for WebService-NMA
+Revision history for WebService-NotifyMyAndroid
+
+0.0.2  Mon Jul  4 08:38:20 2011
+       Renamed to 'WebService-NotifyMyAndroid'.
+       Added a README.
+       Captured additional test dependencies to make CPANTS happy.
 
 0.0.1  Mon Jun 20 11:43:25 2011
        Initial release.

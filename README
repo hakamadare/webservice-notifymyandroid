@@ -1,19 +1,8 @@
-WebService-NMA version 0.0.1
+WebService-NotifyMyAndroid version 0.0.2
 
-[ REPLACE THIS...
-
-  The README is used to introduce the module and provide instructions on
-  how to install the module, any machine dependencies it may have (for
-  example C compilers and installed libraries) and any other information
-  that should be understood before the module is installed.
-
-  A README file is required for CPAN modules since CPAN extracts the
-  README file from a module distribution so that people browsing the
-  archive can use it get an idea of the modules uses. It is usually a
-  good idea to provide version information here so that people can
-  decide whether fixes for the module are worth downloading.
-]
-
+WebService-NotifyMyAndroid provides a Perl wrapper arround the web API
+to the "Notify My Android" service (http://nma.usk.bz).  Use this module
+to send messages to your Android device.
 
 INSTALLATION
 
@@ -27,8 +16,12 @@ To install this module, run the following commands:
 
 DEPENDENCIES
 
-None.
+    Readonly
+    WebService::Simple
+    XML::Simple
 
+Android devices must be running OS version 2.2 (FroYo) or later in order
+to receive push notifications.
 
 COPYRIGHT AND LICENCE
 
