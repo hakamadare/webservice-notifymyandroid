@@ -4,7 +4,7 @@ MANIFEST
 META.yml
 README
 SIGNATURE
-lib/WebService/NMA.pm
+lib/WebService/NotifyMyAndroid.pm
 t/00.load.t
 t/01.verify.t
 t/02.notify.t

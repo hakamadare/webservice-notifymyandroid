@@ -12,8 +12,8 @@ meta-spec:
   version: 1.4
 name: WebService-NMA
 provides:
-  WebService::NMA:
-    file: lib/WebService/NMA.pm
+  WebService::NotifyMyAndroid:
+    file: lib/WebService/NotifyMyAndroid.pm
     version: v0.0.1
 requires:
   Carp: 0

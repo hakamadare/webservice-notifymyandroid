@@ -4,9 +4,9 @@ WriteMakefile
 (
           'PL_FILES' => {},
           'INSTALLDIRS' => 'site',
-          'NAME' => 'WebService::NMA',
+          'NAME' => 'WebService::NotifyMyAndroid',
           'EXE_FILES' => [],
-          'VERSION_FROM' => 'lib/WebService/NMA.pm',
+          'VERSION_FROM' => 'lib/WebService/NotifyMyAndroid.pm',
           'PREREQ_PM' => {
                            'WebService::Simple' => 0,
                            'Regexp::Common' => 0,

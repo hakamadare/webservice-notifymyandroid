@@ -4,10 +4,10 @@ use Module::Build;
 
 my $builder = Module::Build->new(
     abstract            => 'Perl interface to Notify My Android web API',
-    module_name         => 'WebService::NMA',
+    module_name         => 'WebService::NotifyMyAndroid',
     license             => 'perl',
     dist_author         => 'Steve Huff <shuff@cpan.org>',
-    dist_version_from   => 'lib/WebService/NMA.pm',
+    dist_version_from   => 'lib/WebService/NotifyMyAndroid.pm',
     requires => {
         'Carp'                  => 0,
         'Params::Validate'      => 0,

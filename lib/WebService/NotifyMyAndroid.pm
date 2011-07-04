@@ -1,4 +1,4 @@
-package WebService::NMA;
+package WebService::NotifyMyAndroid;
 use base qw( WebService::Simple );
 use warnings;
 use strict;
@@ -121,19 +121,19 @@ __END__
 
 =head1 NAME
 
-WebService::NMA - Perl interface to Notify My Android web API
+WebService::NotifyMyAndroid - Perl interface to Notify My Android web API
 
 
 =head1 VERSION
 
-This document describes WebService::NMA version 0.0.1
+This document describes WebService::NotifyMyAndroid version 0.0.1
 
 
 =head1 SYNOPSIS
 
-    use WebService::NMA;
+    use WebService::NotifyMyAndroid;
 
-    my $nma = WebService::NMA->new;
+    my $nma = WebService::NotifyMyAndroid->new;
 
     # verify an existing API key
     my $result = $nma->verify( apikey => $my_api_key );
@@ -152,7 +152,7 @@ This document describes WebService::NMA version 0.0.1
   
 =head1 DESCRIPTION
 
-C<WebService::NMA> is a Perl interface to the Notify My Android (https://nma.usk.bz/) web API.  One or more NMA API keys are necessary in order to use this module.
+C<WebService::NotifyMyAndroid> is a Perl interface to the Notify My Android (https://nma.usk.bz/) web API.  One or more NMA API keys are necessary in order to use this module.
 
 =head1 INTERFACE 
 
@@ -172,7 +172,7 @@ FIXME!  Error handling is pathetic at this point.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-WebService::NMA requires no configuration files or environment variables.  Future development will support a custom NMA API URL.
+WebService::NotifyMyAndroid requires no configuration files or environment variables.  Future development will support a custom NMA API URL.
 
 
 =head1 DEPENDENCIES

@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 1;                      # last test to print
 
-BEGIN { use_ok( 'WebService::NMA' ); }
+BEGIN { use_ok( 'WebService::NotifyMyAndroid' ); }
 
 use Data::Dumper;
 
