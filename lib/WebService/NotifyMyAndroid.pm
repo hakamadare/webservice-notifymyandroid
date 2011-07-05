@@ -10,7 +10,7 @@ use Params::Validate qw( :all );
 use Readonly;
 use Regexp::Common qw( number );
 
-use version; our $VERSION = qv('v0.0.2');
+use version; our $VERSION = qv('v0.0.3');
 
 # Module implementation here
 
@@ -126,7 +126,7 @@ WebService::NotifyMyAndroid - Perl interface to Notify My Android web API
 
 =head1 VERSION
 
-This document describes WebService::NotifyMyAndroid version 0.0.1
+This document describes WebService::NotifyMyAndroid version 0.0.3.
 
 
 =head1 SYNOPSIS
